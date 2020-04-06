@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server index.js"
   },
-  "author": "Arfat Salman",
+  "author": "Pauline Kors",
   "license": "MIT",
   "private": false,
   "dependencies": {
