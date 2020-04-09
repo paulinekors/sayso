@@ -10,14 +10,17 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "core-js": "^3.6.4",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "regenerator-runtime": "^0.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "8.0.0-beta.0",
+    "babel-plugin-transform-async-to-module-method": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",

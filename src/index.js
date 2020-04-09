@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 ReactDOM.render(
-  <h1>Hello World with JSX, Babel and Webapck</h1>,
+  <App />,
   document.getElementById("root")
 );
