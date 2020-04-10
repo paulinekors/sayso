@@ -11,9 +11,16 @@
   "private": false,
   "dependencies": {
     "core-js": "^3.6.4",
+    "css-loader": "^3.5.1",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.1",
+    "normalize.css": "7.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "0.18.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

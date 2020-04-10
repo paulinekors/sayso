@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from 'react';
-//Himport ListMessages from './ListMessages';
+import { inRange } from 'lodash';
+import ListMessages from './ListMessages';
+import '../styles/styles.scss';
+import 'normalize.css/normalize.css';
 //import * as MessagesAPI from '../utils/MessagesAPI';
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [isError, setError] = useState(false);
+  const api = 'http://localhost:3000';
+  const limit = 50;
 
   async function getMessages() {
-    const response = await fetch('http://localhost:3000/messages', { mode: "no-cors" });
-    const messages = await response.json();
-    setMessages(messages);
-
-    console.log("response:", response);
-    console.log("messages:", messages);
-
+    const response = await fetch(`${api}/messages?limit=` + limit);
+    if (inRange(response.status, 200, 300)) {
+      const messages = await response.json();
+      setMessages(messages);
+    } else {
+      setError(true);
+    }
   }
 
   useEffect(() => {
-      getMessages();
+    getMessages();
   }, []);
 
   return (
-    //   <ListMessages messages={messages} />
-    <div>
-      {messages.map((message) => (
-        <li key={message.id}>{message.title}</li>
-      ))}
-    </div>
+      <ListMessages 
+        messages={messages} 
+        isError={isError}
+       />
   );
 }
 
