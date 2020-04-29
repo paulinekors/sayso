@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const { error, messages } = await fetchMessages(`?limit=` + limit);
+        const { error, messages } = await fetchMessages(limit);
 
         if (error) {
           throw error;
