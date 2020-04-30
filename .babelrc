@@ -1,17 +1,18 @@
-// {
-//     "presets": ["@babel/preset-react"]
-//   }
-
   {
     "presets": [
       [
         "@babel/preset-env",
         {
           "targets": {
-            "browsers": ["last 2 versions"]
+            "browsers": [
+              "last 2 versions"
+            ]
           }
         }
       ],
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-async-to-generator"
     ]
   }
