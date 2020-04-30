@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import React from 'react';
-import {render, within, cleanup} from '@testing-library/react';
+import {render, within, cleanup, waitForElement} from '@testing-library/react';
 import response from '../components/ListMessages.mock';
 import nock from 'nock';
 import App from '../../components/App';
@@ -15,11 +15,12 @@ describe('App', () => {
       .reply(200, response);
   });
 
-  // it('should render its children', () => {
-  //     const { container, getByTestId } = render(<App />)
-  //     expect(container.children.length).toBe(1);
-  //     expect(getByTestId("messages")).toBeDefined();
-  // });
+  it('should render its children', () => {
+      const { container, getByTestId, getByText } = render(<App />)
+      waitForElement(() => getByText('app'))
+      expect(container.children.length).toBe(1);
+      expect(getByTestId('messages')).toBeDefined();
+  });
 
   // it('should show a total of 50 messages', () => {
   //     const app = render(<App />)

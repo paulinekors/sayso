@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ListMessages from './ListMessages';
 import { fetchMessages } from '../utils/MessagesAPI';
-import '../styles/styles.scss';
-import 'normalize.css/normalize.css';
+// import '../styles/styles.scss';
+// import 'normalize.css/normalize.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
