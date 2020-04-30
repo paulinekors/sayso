@@ -4,6 +4,10 @@ import { getFormattedDate } from '../utils/DateFormatter';
 
 function ListMessages(props) {
 
+  if (!props.messages || !props.messages.length) {
+    return <div>No messages</div>
+  }
+
   return (    
     <ol className="message-list">
       {props.error && <div>Something went wrong</div>}
