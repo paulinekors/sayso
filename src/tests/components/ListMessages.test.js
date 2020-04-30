@@ -1,10 +1,7 @@
 import '@testing-library/jest-dom'
-
 import React from 'react'
 import {render, cleanup} from '@testing-library/react';
 import ListMessages from '../../components/ListMessages';
-import response from '../components/ListMessages.mock';
-import nock from 'nock';
 
 afterEach(cleanup);
 
@@ -56,17 +53,5 @@ describe('ListMessages', () => {
     });
   });
 
-// Return a total of 50 messages when rendering ListMessages 
-describe('ListMessages', () => {
-  beforeEach(() => {
-    nock('http://localhost:3000')
-      .get('/messages?limit=50/')
-      .reply(200, response, '');
-  });
 
-  it('should show a total of 50 messages', () => {
-    render(<ListMessages messages={response} error={false} />);
-    expect(messages).toHaveLength(50);
-  });
-});
 

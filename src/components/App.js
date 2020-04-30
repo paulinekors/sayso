@@ -20,7 +20,7 @@ function App() {
 
         setMessages(messages);
       } catch (error) {
-          console.error(error)
+        console.error(error);
         setError(true);
       }
     };
@@ -28,7 +28,11 @@ function App() {
     fetch();
   }, []);
 
-  return <ListMessages messages={messages} error={error} />;
+  return (
+    <div data-testid="app">
+      <ListMessages messages={messages} error={error} data-testid="messages" />
+    </div>
+  );
 }
 
 export default App;
