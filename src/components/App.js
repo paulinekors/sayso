@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from 'react';
-//Himport ListMessages from './ListMessages';
-//import * as MessagesAPI from '../utils/MessagesAPI';
+import ListMessages from './ListMessages';
+import { fetchMessages } from '../utils/MessagesAPI';
+import '../styles/styles.scss';
+import 'normalize.css/normalize.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
-
-  async function getMessages() {
-    const response = await fetch('http://localhost:3000/messages', { mode: "no-cors" });
-    const messages = await response.json();
-    setMessages(messages);
-
-    console.log("response:", response);
-    console.log("messages:", messages);
-
-  }
+  const [error, setError] = useState(false);
+  const limit = 50;
 
   useEffect(() => {
-      getMessages();
+    const fetch = async () => {
+      try {
+        const { error, messages } = await fetchMessages(limit);
+
+        if (error) {
+          throw error;
+        }
+
+        setMessages(messages);
+      } catch (error) {
+        console.error(error);
+        setError(true);
+      }
+    };
+
+    fetch();
   }, []);
 
   return (
-    //   <ListMessages messages={messages} />
-    <div>
-      {messages.map((message) => (
-        <li key={message.id}>{message.title}</li>
-      ))}
+    <div data-testid="app">
+      <ListMessages messages={messages} error={error} data-testid="messages" />
     </div>
   );
+
+
 }
 
 export default App;
