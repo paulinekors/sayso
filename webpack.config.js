@@ -37,6 +37,9 @@ module.exports = {
       template: 'src/index.html',
     }),
   ],
+  devServer: {
+    historyApiFallback: true
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
