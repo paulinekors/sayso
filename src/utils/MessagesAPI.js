@@ -1,3 +1,4 @@
+import fetch from "node-fetch"
 import { inRange } from 'lodash';
 const ROOT_URL = 'http://localhost:3000';
 
@@ -9,13 +10,10 @@ export const fetchMessages = async (limit) => {
     const messages = await response.json();
 
     return {
-      messages,
+      messages: messages,
       error: null,
       status: response.status,
     };
   }
   return { messages: [], error: '', status: response.status };
 };
-
-
- 
