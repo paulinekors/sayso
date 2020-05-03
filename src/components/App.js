@@ -5,6 +5,7 @@ import 'normalize.css/normalize.css';
 import PropTypes from 'prop-types';
 import { fetchMessages } from '../reducers/messagesReducers';
 import { connect } from 'react-redux';
+import FullPageSpinner from "../utils/FullPageSpinner";
 
 function App() {
   const limit = 50;
@@ -18,7 +19,7 @@ function App() {
     return <div>Error! {error.message}</div>;
   }
   if (loading) {
-    return <div>Loading...</div>;
+    return <FullPageSpinner />;
   }
   if (!messages || !messages.length) {
     return <div>No messages</div>
