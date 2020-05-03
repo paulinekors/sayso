@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getFormattedDate } from '../utils/DateFormatter';
+import { connect } from 'react-redux';
 
 function ListMessages(props) {
 
-  if (!props.messages || !props.messages.length) {
+  if (!props.messagelist || !props.messagelist.length) {
     return <div>No messages</div>
   }
 
   return (    
     <ol className="message-list">
       {props.error && <div>Something went wrong</div>}
-      {props.messages.map((message) => (
+      {props.messagelist.map((message) => (
         <li key={message.id} className="message-list-item">
           <div className="message-details">
             <p>{message.title}</p>
@@ -25,8 +26,15 @@ function ListMessages(props) {
 }
 
 ListMessages.propTypes = {
-  messages: PropTypes.array.isRequired,
+  messagelist: PropTypes.array.isRequired,
   error: PropTypes.bool.isRequired,
 };
 
-export default ListMessages;
+function mapStateToProps(state) {
+  return {
+    messages: state.messagelist.messages,
+    error: state.messagelist.error
+  };
+}
+
+export default connect(mapStateToProps)(ListMessages);
