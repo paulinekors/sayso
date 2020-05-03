@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import ListMessages from './ListMessages';
 import { getFormattedDate } from '../utils/DateFormatter';
 import '../styles/styles.scss';
 import 'normalize.css/normalize.css';
@@ -9,11 +8,11 @@ import { connect } from 'react-redux';
 
 function App() {
   const limit = 50;
-  const { error, loading, messagelist } = this.props;
+  const { error, loading, messages } = this.props;
 
   useEffect(() => {
     fetchMessages(limit);
-  });
+  }, []);
 
   if (error) {
     return <div>Error! {error.message}</div>;
@@ -21,19 +20,14 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  if (!messagelist || !messagelist.length) {
+  if (!messages || !messages.length) {
     return <div>No messages</div>
   }
 
   return (
     <div data-testid="app">
-      {/* <ListMessages 
-        messagelist={this.props.messages} 
-        error={this.props.error} 
-        data-testid="messages" 
-      /> */}
       <ol className="message-list">
-        {messagelist.map((message) => (
+        {messages.map((message) => (
           <li key={message.id} className="message-list-item">
             <div className="message-details">
               <p>{message.title}</p>
@@ -49,16 +43,16 @@ function App() {
 
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
-  messagelist: PropTypes.array.isRequired,
-  error: PropTypes.string.isRequired,
+  messages: PropTypes.array.isRequired,
+  error: PropTypes.string,
   loading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    messagelist: state.messagelist.messages,
-    loading: state.messagelist.loading,
-    error: state.messagelist.error,
+    messages: state.listmessages.messages,
+    loading: state.listmessages.loading,
+    error: state.listmessages.error,
   };
 }
 
@@ -67,6 +61,7 @@ export default connect(mapStateToProps)(App);
 // ORIGINAL API-CALL-WITHOUT_REDUX_STORE IMPORTS
 // import { useState } from 'react';
 // import { fetchMessages } from '../utils/MessagesAPI';
+// import ListMessages from './ListMessages';
 
 // ORIGINAL API-CALL-WITHOUT_REDUX_STORE CODE
 // function App() {

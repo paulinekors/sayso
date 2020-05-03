@@ -1,8 +1,8 @@
-import messagesReducer from '../reducers/messagesReducers';
+import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 
 export default () => {
-  const store = createStore(messagesReducer, applyMiddleware(thunk));
+  const store = createStore(rootReducer, applyMiddleware(thunk));
   return store;
 };

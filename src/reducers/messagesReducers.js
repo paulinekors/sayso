@@ -26,7 +26,7 @@ export default function messagesReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        messages: action.payload.messagelist
+        messages: action.payload.messages
       };
     case FETCH_MESSAGES_FAILURE:
       // Set loading to false
