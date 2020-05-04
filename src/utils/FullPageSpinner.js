@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../img/Spinner.gif';
+import PropTypes from 'prop-types';
 import '../styles/components/_full-page-spinner.scss';
 
 function PageLoader(props) {
@@ -16,6 +17,10 @@ function PageLoader(props) {
     </div>
   );
 }
+
+PageLoader.propTypes = {
+  loading: PropTypes.bool.isRequired
+};
 
 function mapStateToProps(state) {
   return {
