@@ -2,12 +2,16 @@ import {
   FETCH_MESSAGES_BEGIN,
   FETCH_MESSAGES_SUCCESS,
   FETCH_MESSAGES_FAILURE,
+  SHOW_PREV_PAGE,
+  SHOW_NEXT_PAGE
 } from '../actioncreators/messagesActions';
 
 const initialState = {
   messages: [],
   loading: false,
   error: null,
+  offset: 0,
+  limit: 50
 };
 
 export default function messagesReducer(state = initialState, action) {
@@ -38,6 +42,18 @@ export default function messagesReducer(state = initialState, action) {
         error: action.payload.error,
         messages: []
       };
+      case SHOW_PREV_PAGE:
+        // Show the prev # of messages determined by limit and offset
+        return {
+          ...state,
+          offset: action.payload.offset - action.payload.limit
+        };
+      case SHOW_NEXT_PAGE:
+        // Show the next # of messages determined by limit and offset
+        return {
+          ...state,
+          offset: action.payload.offset + action.payload.limit
+        }
     default:
       return state;
   }

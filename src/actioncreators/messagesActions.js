@@ -1,8 +1,10 @@
-// App code
+// App code fetching messages
+export const ROOT_URL = 'http://localhost:3000';
 export const FETCH_MESSAGES_BEGIN = 'FETCH_MESSAGES_BEGIN';
 export const FETCH_MESSAGES_SUCCESS = 'FETCH_MESSAGES_SUCCESS';
 export const FETCH_MESSAGES_FAILURE = 'FETCH_MESSAGES_FAILURE';
-export const ROOT_URL = 'http://localhost:3000';
+export const SHOW_NEXT_PAGE = 'SHOW_NEXT_PAGE';
+export const SHOW_PREV_PAGE = 'SHOW_PREV_PAGE';
 
 // Action creators
 export const fetchMessagesBegin = () => ({
@@ -19,9 +21,19 @@ export const fetchMessagesFailure = (error) => ({
   payload: { error },
 });
 
+export const showPrevPage = (offset) => ({
+  type: SHOW_PREV_PAGE,
+  payload: { offset }
+});
+
+export const showNextPage = (offset) => ({
+  type: SHOW_NEXT_PAGE,
+  payload: { offset }
+});
+
 // Fetching data
-export function fetchMessages(limit) {
-  const MESSAGES_URL = `${ROOT_URL}/messages?limit=${limit}`;
+export function fetchMessages(limit, offset) {
+  const MESSAGES_URL = `${ROOT_URL}/messages?limit=${limit}&offset=${offset}`;
   return (dispatch) => {
     dispatch(fetchMessagesBegin());
     return fetch(MESSAGES_URL)
@@ -33,3 +45,4 @@ export function fetchMessages(limit) {
       .catch((error) => dispatch(fetchMessagesFailure(error)));
   };
 }
+
