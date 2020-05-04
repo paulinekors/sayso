@@ -7,13 +7,14 @@ import { fetchMessages } from '../reducers/messagesReducers';
 import { connect } from 'react-redux';
 import FullPageSpinner from "../utils/FullPageSpinner";
 
-function App() {
+function App(props) {
   const limit = 50;
-  const { error, loading, messages } = this.props;
-
+  const { error, loading, messages, fetchMessages } = props;
+  
   useEffect(() => {
     fetchMessages(limit);
-  }, []);
+  }, [fetchMessages]);
+
 
   if (error) {
     return <div>Error! {error.message}</div>;
@@ -57,7 +58,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { fetchMessages })(App);
 
 // ORIGINAL API-CALL-WITHOUT_REDUX_STORE IMPORTS
 // import { useState } from 'react';
