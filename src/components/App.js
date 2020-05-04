@@ -3,14 +3,14 @@ import { getFormattedDate } from '../utils/DateFormatter';
 import '../styles/styles.scss';
 import 'normalize.css/normalize.css';
 import PropTypes from 'prop-types';
-import { fetchMessages } from '../reducers/messagesReducers';
+import { fetchMessages } from '../actioncreators/messagesActions';
 import { connect } from 'react-redux';
 import FullPageSpinner from "../utils/FullPageSpinner";
 
 function App(props) {
   const limit = 50;
   const { error, loading, messages, fetchMessages } = props;
-  
+
   useEffect(() => {
     fetchMessages(limit);
   }, [fetchMessages]);

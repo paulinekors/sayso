@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import Spinner from '../img/Spinner.gif';
 import '../styles/components/_full-page-spinner.scss';
 
-function PageLoader() {
-  const { loading } = this.props;
+function PageLoader(props) {
+  const { loading } = props;
 
   if (!loading) return null;
 
