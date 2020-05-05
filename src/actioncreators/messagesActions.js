@@ -21,14 +21,14 @@ export const fetchMessagesFailure = (error) => ({
   payload: { error },
 });
 
-export const showPrevPage = (offset) => ({
+export const showPrevPage = (messages) => ({
   type: SHOW_PREV_PAGE,
-  payload: { offset }
+  payload: { messages }
 });
 
-export const showNextPage = (offset) => ({
+export const showNextPage = (messages) => ({
   type: SHOW_NEXT_PAGE,
-  payload: { offset }
+  payload: { messages }
 });
 
 // Fetching data

@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   messages: [],
-  loading: false,
+  status: "initial",
   error: null,
   offset: 0,
   limit: 50
@@ -21,7 +21,7 @@ export default function messagesReducer(state = initialState, action) {
       // Also reset errors
       return {
         ...state, 
-        loading: true, 
+        status: "pending", 
         error: null
       };
     case FETCH_MESSAGES_SUCCESS:
@@ -29,7 +29,7 @@ export default function messagesReducer(state = initialState, action) {
       // Replace empty messages array with messages from the server
       return {
         ...state,
-        loading: false,
+        status: "resolved",
         messages: action.payload.messages
       };
     case FETCH_MESSAGES_FAILURE:
@@ -38,7 +38,7 @@ export default function messagesReducer(state = initialState, action) {
       // There are no messages to display, so set messages to empty array
       return {
         ...state,
-        loading: false,
+        status: "rejected",
         error: action.payload.error,
         messages: []
       };
@@ -46,13 +46,13 @@ export default function messagesReducer(state = initialState, action) {
         // Show the prev # of messages determined by limit and offset
         return {
           ...state,
-          offset: action.payload.offset - action.payload.limit
+          offset: state.offset - action.payload.limit
         };
       case SHOW_NEXT_PAGE:
         // Show the next # of messages determined by limit and offset
         return {
           ...state,
-          offset: action.payload.offset + action.payload.limit
+          offset: state.offset + action.payload.limit
         }
     default:
       return state;

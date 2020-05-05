@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Spinner from '../img/Spinner.gif';
-import PropTypes from 'prop-types';
 import '../styles/components/_full-page-spinner.scss';
+//import PropTypes from 'prop-types';
+//import { connect } from 'react-redux';
 
-function PageLoader(props) {
-  const { loading } = props;
+function PageLoader() {
+  // const { status } = props;
 
-  if (!loading) return null;
+  // if (status !=== 'pending') return null;
 
   return (
     <div className="loader-container">
@@ -18,14 +18,16 @@ function PageLoader(props) {
   );
 }
 
-PageLoader.propTypes = {
-  loading: PropTypes.bool.isRequired
-};
+// PageLoader.propTypes = {
+//   status: PropTypes.string.isRequired
+// };
 
-function mapStateToProps(state) {
-  return {
-    loading: state.listmessages.loading,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     status: state.listmessages.status,
+//   };
+// }
 
-export default connect(mapStateToProps)(PageLoader);
+export default PageLoader;
+
+//export default connect(mapStateToProps)(PageLoader);
