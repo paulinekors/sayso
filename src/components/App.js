@@ -5,9 +5,7 @@ import 'normalize.css/normalize.css';
 import PropTypes from 'prop-types';
 import {
   fetchMessages,
-  showPage,
-  // showPrevPage,
-  // showNextPage,
+  showPage
 } from '../actioncreators/messagesActions';
 import { connect } from 'react-redux';
 import FullPageSpinner from '../utils/FullPageSpinner';
@@ -21,8 +19,6 @@ function App(props) {
     page,
     fetchMessages,
     showPage,
-    // showNextPage,
-    // showPrevPage,
   } = props;
   const isLoading = status === 'pending';
   const isResolved = status === 'resolved';
@@ -63,18 +59,6 @@ function App(props) {
           ))}
         </ol>
         <div>
-          {/* <button className="btn" onClick={() => showPage(1)}>
-            Page 1
-          </button>
-          <button className="btn" onClick={() => showPage(2)}>
-            Page 2
-          </button> */}
-          {/* <button className="btn" onClick={() => fetchMessages(50, 100)}>
-            Page 3
-          </button>
-          <button className="btn" onClick={() => fetchMessages(50, 150)}>
-            Page 4
-          </button> */}
         </div>
         {page > 1 && (
           <button className="btn" onClick={() => showPage(page - 2)}>
@@ -99,19 +83,6 @@ function App(props) {
             Page {page + 3}
           </button>
         )}
-
-        {/* <button onClick={() => showPage(page - 1)}>
-          Previous page
-        </button>
-        <button onClick={() => showPage(page + 1)}>
-          Next page
-        </button> */}
-        {/* <button className="btn" onClick={showPrevPage}>
-          Previous page
-        </button>
-        <button className="btn" onClick={showNextPage}>
-          Next page
-        </button> */}
       </div>
     );
   }
@@ -119,8 +90,6 @@ function App(props) {
 
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
-  // showNextPage: PropTypes.func.isRequired,
-  // showPrevPage: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
   error: PropTypes.string,
   status: PropTypes.string.isRequired,
@@ -140,9 +109,10 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchMessages,
   showPage,
-  // showPrevPage,
-  // showNextPage,
 })(App);
+
+
+
 
 // ORIGINAL API-CALL-WITHOUT_REDUX_STORE IMPORTS
 // import { useState } from 'react';

@@ -2,9 +2,7 @@ import {
   FETCH_MESSAGES_BEGIN,
   FETCH_MESSAGES_SUCCESS,
   FETCH_MESSAGES_FAILURE,
-  SHOW_PAGE,
-  // SHOW_PREV_PAGE,
-  // SHOW_NEXT_PAGE
+  SHOW_PAGE
 } from '../actioncreators/messagesActions';
 
 const initialState = {
@@ -15,8 +13,6 @@ const initialState = {
   offset: 0,
   limit: 50,
 };
-
-//const page = (offset + limit) / limit;
 
 export default function messagesReducer(state = initialState, action) {
   switch (action.type) {
@@ -47,26 +43,11 @@ export default function messagesReducer(state = initialState, action) {
         messages: [],
       };
     case SHOW_PAGE:
+      // Show the requested page 
       return {
         ...state,
         page: action.payload >= 1 ? action.payload : state.page,
       };
-    // case SHOW_PREV_PAGE:
-    //   // Show current state if page is first page
-    //   if (state.page <= 1) return state;
-    //   // Show previous page
-    //   return {
-    //     ...state,
-    //     page: state.page - 1
-    //   };
-    // case SHOW_NEXT_PAGE:
-    //   // Show current state if page is last page
-    //    if (state.page < state.limit) return state;
-    //   // Show next page
-    //   return {
-    //     ...state,
-    //     page: state.page + 1
-    //   }
     default:
       return state;
   }
