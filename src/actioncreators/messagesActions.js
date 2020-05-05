@@ -3,8 +3,9 @@ export const ROOT_URL = 'http://localhost:3000';
 export const FETCH_MESSAGES_BEGIN = 'FETCH_MESSAGES_BEGIN';
 export const FETCH_MESSAGES_SUCCESS = 'FETCH_MESSAGES_SUCCESS';
 export const FETCH_MESSAGES_FAILURE = 'FETCH_MESSAGES_FAILURE';
-export const SHOW_NEXT_PAGE = 'SHOW_NEXT_PAGE';
-export const SHOW_PREV_PAGE = 'SHOW_PREV_PAGE';
+export const SHOW_PAGE = 'SHOW_PAGE';
+// export const SHOW_NEXT_PAGE = 'SHOW_NEXT_PAGE';
+// export const SHOW_PREV_PAGE = 'SHOW_PREV_PAGE';
 
 // Action creators
 export const fetchMessagesBegin = () => ({
@@ -21,15 +22,17 @@ export const fetchMessagesFailure = (error) => ({
   payload: { error },
 });
 
-export const showPrevPage = (messages) => ({
-  type: SHOW_PREV_PAGE,
-  payload: { messages }
-});
+export const showPage = (number) => (dispatch) => {
+  return dispatch({ type: 'SHOW_PAGE', payload: number });
+};
 
-export const showNextPage = (messages) => ({
-  type: SHOW_NEXT_PAGE,
-  payload: { messages }
-});
+// export const showPrevPage = () => ({
+//   type: SHOW_PREV_PAGE,
+// });
+
+// export const showNextPage = () => ({
+//   type: SHOW_NEXT_PAGE,
+// });
 
 // Fetching data
 export function fetchMessages(limit, offset) {
@@ -45,4 +48,3 @@ export function fetchMessages(limit, offset) {
       .catch((error) => dispatch(fetchMessagesFailure(error)));
   };
 }
-

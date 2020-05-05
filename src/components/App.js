@@ -5,8 +5,9 @@ import 'normalize.css/normalize.css';
 import PropTypes from 'prop-types';
 import {
   fetchMessages,
-  showPrevPage,
-  showNextPage,
+  showPage,
+  // showPrevPage,
+  // showNextPage,
 } from '../actioncreators/messagesActions';
 import { connect } from 'react-redux';
 import FullPageSpinner from '../utils/FullPageSpinner';
@@ -18,9 +19,11 @@ function App(props) {
     error,
     status,
     messages,
+    page,
     fetchMessages,
-    showNextPage,
-    showPrevPage,
+    showPage,
+    // showNextPage,
+    // showPrevPage,
   } = props;
   const isLoading = status === 'pending';
   const isResolved = status === 'resolved';
@@ -30,7 +33,11 @@ function App(props) {
 
   useEffect(() => {
     fetchMessages(limit, offset);
-  }, [fetchMessages]);
+  }, [fetchMessages]); // on 1st render
+
+  useEffect(() => {
+    fetchMessages(limit, offset);
+  }, [page]); // on page-change
 
   if (isRejected) {
     return <div>Error! {error.message}</div>;
@@ -57,35 +64,55 @@ function App(props) {
           ))}
         </ol>
         <div>
-          <button className="btn" onClick={() => fetchMessages(50, 0)}>
+          {/* <button className="btn" onClick={() => showPage(1)}>
             Page 1
           </button>
-          <button className="btn" onClick={() => fetchMessages(50, 50)}>
+          <button className="btn" onClick={() => showPage(2)}>
             Page 2
-          </button>
-          <button className="btn" onClick={() => fetchMessages(50, 100)}>
+          </button> */}
+          {/* <button className="btn" onClick={() => fetchMessages(50, 100)}>
             Page 3
           </button>
           <button className="btn" onClick={() => fetchMessages(50, 150)}>
             Page 4
-          </button>
+          </button> */}
         </div>
-        <button
-          className="btn"
-          onClick={() => {
-            showPrevPage();
-          }}
-        >
+        {page > 2 && (
+          <button className="btn" onClick={() => showPage(page - 2)}>
+            Page {page - 2}
+          </button>
+        )}
+        {page > 1 && (
+          <button className="btn" onClick={() => showPage(page - 1)}>
+            Page {page - 1}
+          </button>
+        )}
+        <button className="btn" disabled>
+          Page {page}
+        </button>
+        {messages.length < limit && (
+          <button className="btn" onClick={() => showPage(page + 1)}>
+            Page {page + 1}
+          </button>
+        )}
+        {messages.length < limit && (
+          <button className="btn" onClick={() => showPage(page + 2)}>
+            Page {page + 2}
+          </button>
+        )}
+
+        {/* <button onClick={() => showPage(page - 1)}>
           Previous page
         </button>
-        <button
-          className="btn"
-          onClick={() => {
-            showNextPage();
-          }}
-        >
+        <button onClick={() => showPage(page + 1)}>
           Next page
+        </button> */}
+        {/* <button className="btn" onClick={showPrevPage}>
+          Previous page
         </button>
+        <button className="btn" onClick={showNextPage}>
+          Next page
+        </button> */}
       </div>
     );
   }
@@ -93,11 +120,12 @@ function App(props) {
 
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
-  showNextPage: PropTypes.func.isRequired,
-  showPrevPage: PropTypes.func.isRequired,
+  // showNextPage: PropTypes.func.isRequired,
+  // showPrevPage: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
   error: PropTypes.string,
   status: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -106,21 +134,16 @@ function mapStateToProps(state) {
     status: state.listmessages.status,
     error: state.listmessages.error,
     offset: state.listmessages.offset,
+    page: state.listmessages.page,
   };
 }
 
 export default connect(mapStateToProps, {
   fetchMessages,
-  showPrevPage,
-  showNextPage,
+  showPage,
+  // showPrevPage,
+  // showNextPage,
 })(App);
-
-
-
-
-
-
-
 
 // ORIGINAL API-CALL-WITHOUT_REDUX_STORE IMPORTS
 // import { useState } from 'react';
