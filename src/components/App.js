@@ -14,7 +14,6 @@ import FullPageSpinner from '../utils/FullPageSpinner';
 
 function App(props) {
   const limit = 50;
-  const offset = 0;
   const {
     error,
     status,
@@ -32,11 +31,11 @@ function App(props) {
   console.log(messages); // making sure messages is not undefined
 
   useEffect(() => {
-    fetchMessages(limit, offset);
+    fetchMessages(limit, page * limit);
   }, [fetchMessages]); // on 1st render
 
   useEffect(() => {
-    fetchMessages(limit, offset);
+    fetchMessages(limit, page * limit);
   }, [page]); // on page-change
 
   if (isRejected) {
@@ -90,12 +89,12 @@ function App(props) {
         <button className="btn" disabled>
           Page {page}
         </button>
-        {messages.length < limit && (
+        {messages.length >= limit && (
           <button className="btn" onClick={() => showPage(page + 1)}>
             Page {page + 1}
           </button>
         )}
-        {messages.length < limit && (
+        {messages.length >= limit && (
           <button className="btn" onClick={() => showPage(page + 2)}>
             Page {page + 2}
           </button>

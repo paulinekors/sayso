@@ -23,7 +23,7 @@ export const fetchMessagesFailure = (error) => ({
 });
 
 export const showPage = (number) => (dispatch) => {
-  return dispatch({ type: 'SHOW_PAGE', payload: number });
+  return dispatch({ type: SHOW_PAGE, payload: number });
 };
 
 // export const showPrevPage = () => ({
