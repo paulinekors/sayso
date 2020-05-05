@@ -76,27 +76,27 @@ function App(props) {
             Page 4
           </button> */}
         </div>
-        {page > 2 && (
-          <button className="btn" onClick={() => showPage(page - 2)}>
-            Page {page - 2}
-          </button>
-        )}
         {page > 1 && (
-          <button className="btn" onClick={() => showPage(page - 1)}>
+          <button className="btn" onClick={() => showPage(page - 2)}>
             Page {page - 1}
           </button>
         )}
+        {page > 0 && (
+          <button className="btn" onClick={() => showPage(page - 1)}>
+            Page {page}
+          </button>
+        )}
         <button className="btn" disabled>
-          Page {page}
+          Page {page + 1}
         </button>
         {messages.length >= limit && (
           <button className="btn" onClick={() => showPage(page + 1)}>
-            Page {page + 1}
+            Page {page + 2}
           </button>
         )}
         {messages.length >= limit && (
           <button className="btn" onClick={() => showPage(page + 2)}>
-            Page {page + 2}
+            Page {page + 3}
           </button>
         )}
 

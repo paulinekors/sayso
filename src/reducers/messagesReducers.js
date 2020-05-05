@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   messages: [],
-  page: 1,
+  page: 0,
   status: 'initial',
   error: null,
   offset: 0,
