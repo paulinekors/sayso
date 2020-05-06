@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import App from '../components/App';
+import DetailView from '../components/DetailView';
 
 const AppRouter = () => (
   <BrowserRouter>
       <Switch>
         <Route path="/" component={App} exact={true} />
+        <Route path="/:id" component={DetailView} />
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
         {/* Other ways of writing this are: */}
         {/* <Redirect from="*" to="/" /> */}

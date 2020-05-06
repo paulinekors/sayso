@@ -24,7 +24,7 @@ export const showPage = (number) => (dispatch) => {
   return dispatch({ type: SHOW_PAGE, payload: number });
 };
 
-// Fetching data
+// Fetching all messages
 export function fetchMessages(limit, offset) {
   const MESSAGES_URL = `${ROOT_URL}/messages?limit=${limit}&offset=${offset}`;
   return (dispatch) => {
