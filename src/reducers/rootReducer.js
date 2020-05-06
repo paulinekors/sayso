@@ -3,6 +3,6 @@ import messagesReducer from "./messagesReducers";
 import messageReducer from "./messageReducer";
 
 export default combineReducers({
-  messagesReducer, 
-  messageReducer
-});
+  messages: messagesReducer,
+  message: messageReducer
+})

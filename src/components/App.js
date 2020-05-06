@@ -97,12 +97,13 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
+//console.log(state);
   return {
-    messages: state.listmessages.messages,
-    status: state.listmessages.status,
-    error: state.listmessages.error,
-    offset: state.listmessages.offset,
-    page: state.listmessages.page,
+    messages: state.messages.messages,
+    status: state.messages.status,
+    error: state.messages.error,
+    offset: state.messages.offset,
+    page: state.messages.page,
   };
 }
 
