@@ -1,12 +1,22 @@
 .comment {
-    border-radius: 25px;
-    position: relative;
-    padding: 25px 30px;
-    background-color: #81ecec;
-    margin: 50px 50px;
-    max-width: 600px;
-    min-width: 600px;
-    box-shadow: 0 2px 5px #ccc;
-    text-align: left;
-    color: #2d3436;
+  background-color: #ffb6b6;
+  border-radius: 25px;
+  position: absolute;
+  padding: 0px 30px;
+  margin-top: 50px;
+  margin-left: -30px;
+  margin-bottom: 50px;
+  max-width: 600px;
+  min-width: 600px;
+  box-shadow: 0 2px 5px #ccc;
+  text-align: left;
+  color: #2d3436;
+
+  &__name {
+    font-weight: bold;
   }
+
+  &__date {
+    font-style: italic;
+  }
+}

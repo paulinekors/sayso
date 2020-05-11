@@ -3,12 +3,12 @@ import { getFormattedDate } from '../utils/DateFormatter';
 import PropTypes from 'prop-types';
 
 const Comment = ({ body, firstName, lastName, createdAt }) => (
-  <div className="comment-details">
+  <div className="comment">
     <p>{body}</p>
-    <p>
+    <p className="comment__name">
       {firstName} {lastName}
     </p>
-    <p>{getFormattedDate(new Date(createdAt))}</p>
+    <p className="comment__date">{getFormattedDate(new Date(createdAt))}</p>
   </div>
 );
 

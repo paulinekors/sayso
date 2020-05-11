@@ -35,15 +35,15 @@ function DetailView(props) {
   return (
     <div className="message">
       <div className="message__top">
-        <h3 className="message__title">{message.title}</h3>
+        <h2 className="message__title">{message.title}</h2>
         <img className="circle-img" src={message.avatar} alt="avatar_img" />
       </div>
       <div className="message__bottom">
         <p>{message.category}</p>
         <p>{message.body}</p>
-        <p>{message.firstName} {message.lastName}</p>
+        <p className="message__name">{message.firstName} {message.lastName}</p>
         <p>{message.email}</p>
-        <p>{getFormattedDate(new Date(message.createdAt))}</p>
+        <p className="message__date">{getFormattedDate(new Date(message.createdAt))}</p>
       </div>
       <Comments />
     </div>
