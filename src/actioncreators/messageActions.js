@@ -21,11 +21,14 @@ export const fetchMessageFailure = (error) => ({
 
 // Fetching specific message details
 export function fetchMessage(id) {
-  const MESSAGES_URL = `${ROOT_URL}/messages/${id}`;
+  //const MESSAGE_URL = `${ROOT_URL}/messages/${id}`;
+  const MESSAGE_URL = `http://localhost:3000/messages/10`;
   return (dispatch) => {
     dispatch(fetchMessageBegin());
-    return fetch(MESSAGES_URL)
+    return fetch(MESSAGE_URL)
       .then((res) => res.json())
+      // .then(res => res.text()) // print error
+      // .then(text => console.log(text)) // print error
       .then((json) => {
         dispatch(fetchMessageSuccess(json));
         return json;

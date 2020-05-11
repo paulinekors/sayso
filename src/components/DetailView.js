@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import FullPageSpinner from '../utils/FullPageSpinner';
 import { fetchMessage } from '../actioncreators/messageActions';
 
 function DetailView(props) {
-  const { id, error, status, message } = props;
+  const { error, status, message, fetchMessage } = props;
+  const { id } = useParams();
   const isLoading = status === 'pending';
   const isResolved = status === 'resolved';
   const isRejected = status === 'rejected';
@@ -18,7 +20,7 @@ function DetailView(props) {
 
 
   if (isRejected) {
-    return <div>Error! {error.message}</div>;
+    return <div>Error! {error.message} </div>;
   }
   if (isLoading) {
     return <FullPageSpinner />;
@@ -30,7 +32,7 @@ function DetailView(props) {
   if (isResolved) {
     return (
       <div>
-        Yay
+        Yay. ID: {id}
       </div>
     );
   }
@@ -38,7 +40,7 @@ function DetailView(props) {
 DetailView.propTypes = {
   fetchMessage: PropTypes.func.isRequired,
   message: PropTypes.object.isRequired,
-  error: PropTypes.string,
+  error: PropTypes.object,
   status: PropTypes.string.isRequired,
 };
 
