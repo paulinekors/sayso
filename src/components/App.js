@@ -3,28 +3,18 @@ import { getFormattedDate } from '../utils/DateFormatter';
 import '../styles/styles.scss';
 import 'normalize.css/normalize.css';
 import PropTypes from 'prop-types';
-import {
-  fetchMessages,
-  showPage
-} from '../actioncreators/messagesActions';
+import { fetchMessages, showPage } from '../actioncreators/messagesActions';
 import { connect } from 'react-redux';
 import FullPageSpinner from '../utils/FullPageSpinner';
 
 function App(props) {
   const limit = 50;
-  const {
-    error,
-    status,
-    messages,
-    page,
-    fetchMessages,
-    showPage,
-  } = props;
+  const { error, status, messages, page, fetchMessages, showPage } = props;
   const isLoading = status === 'pending';
   const isResolved = status === 'resolved';
   const isRejected = status === 'rejected';
 
-  console.log(messages); // making sure messages is not undefined
+  //console.log(messages); // making sure messages is not undefined
 
   useEffect(() => {
     fetchMessages(limit, page * limit);
@@ -46,7 +36,7 @@ function App(props) {
 
   if (isResolved) {
     return (
-      <div data-testid="app">
+      <div>
         <ol className="message-list">
           {messages.map((message) => (
             <li key={message.id} className="message-list-item">
@@ -58,8 +48,6 @@ function App(props) {
             </li>
           ))}
         </ol>
-        <div>
-        </div>
         {page > 1 && (
           <button className="btn" onClick={() => showPage(page - 2)}>
             Page {page - 1}
@@ -97,7 +85,7 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
-//console.log(state);
+  //console.log(state);
   return {
     messages: state.messages.messages,
     status: state.messages.status,

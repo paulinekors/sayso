@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import FullPageSpinner from '../utils/FullPageSpinner';
 import { fetchMessage } from '../actioncreators/messageActions';
 import { getFormattedDate } from '../utils/DateFormatter';
+import Comments from './Comments';
 
 function DetailView(props) {
   const { error, status, message, fetchMessage } = props;
@@ -12,8 +13,8 @@ function DetailView(props) {
   const isLoading = status === 'fetching' || status === 'initial';
   const isRejected = status === 'rejected';
 
-  console.log(message); // making sure message is not undefined
-  console.log(status);
+  //console.log(message); // making sure message is not undefined
+  //console.log(status);
 
   useEffect(() => {
     fetchMessage(id);
@@ -44,6 +45,7 @@ function DetailView(props) {
         <p>{message.email}</p>
         <p>{getFormattedDate(new Date(message.createdAt))}</p>
       </div>
+      <Comments />
     </div>
   );
 }
@@ -56,6 +58,7 @@ DetailView.propTypes = {
 };
 
 function mapStateToProps(state) {
+  console.log("Detailview state:")
   console.log(state);
   return {
     message: state.message.message,
