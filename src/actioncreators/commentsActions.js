@@ -21,7 +21,7 @@ export const fetchCommentsBegin = () => ({
 
 // Fetching comments
 export function fetchComments(id) {
-    const MESSAGE_URL = `${ROOT_URL}/${id}/comments`;
+    const MESSAGE_URL = `${ROOT_URL}/messages/${id}/comments`;
     return (dispatch) => {
       dispatch(fetchCommentsBegin());
       return fetch(MESSAGE_URL)
