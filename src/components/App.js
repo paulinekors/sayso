@@ -37,14 +37,16 @@ function App(props) {
   if (isResolved) {
     return (
       <div>
-        <ol className="message-list">
+        <ol className="list">
           {messages.map((message) => (
-            <li key={message.id} className="message-list-item">
-              <div className="message-details">
-                <p>{message.title}</p>
+            <li key={message.id} className="message-list">
+              <div className="message-list__top">
+                <h2 className="message-list__title">{message.title}</h2>
+                </div>
+                <div className="message-list__bottom">
                 <p>{message.firstName}</p>
                 <p>{getFormattedDate(new Date(message.createdAt))}</p>
-              </div>
+                </div>
             </li>
           ))}
         </ol>
