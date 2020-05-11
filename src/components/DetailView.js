@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import FullPageSpinner from '../utils/FullPageSpinner';
 import { fetchMessage } from '../actioncreators/messageActions';
+import { getFormattedDate } from '../utils/DateFormatter';
 
 function DetailView(props) {
   const { error, status, message, fetchMessage } = props;
   const { id } = useParams();
-  const isLoading = status === 'fetching';
-  // const isResolved = status === 'resolved';
+  const isLoading = status === 'fetching' || status === 'initial';
   const isRejected = status === 'rejected';
 
   console.log(message); // making sure message is not undefined
@@ -31,7 +31,21 @@ function DetailView(props) {
     return <div>No message to display</div>;
   }
 
-  return <div>So fun {message.title}</div>;
+  return (
+    <div className="message">
+      <div className="message__top">
+        <h3 className="message__title">{message.title}</h3>
+        <img className="circle-img" src={message.avatar} alt="avatar_img" />
+      </div>
+      <div className="message__bottom">
+        <p>{message.category}</p>
+        <p>{message.body}</p>
+        <p>{message.firstName} {message.lastName}</p>
+        <p>{message.email}</p>
+        <p>{getFormattedDate(new Date(message.createdAt))}</p>
+      </div>
+    </div>
+  );
 }
 
 DetailView.propTypes = {
