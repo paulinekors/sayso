@@ -21,8 +21,7 @@ export const fetchMessageFailure = (error) => ({
 
 // Fetching specific message details
 export function fetchMessage(id) {
-  //const MESSAGE_URL = `${ROOT_URL}/messages/${id}`;
-  const MESSAGE_URL = `http://localhost:3000/messages/10`;
+  const MESSAGE_URL = `${ROOT_URL}/messages/${id}`;
   return (dispatch) => {
     dispatch(fetchMessageBegin());
     return fetch(MESSAGE_URL)

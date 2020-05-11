@@ -17,7 +17,7 @@ import {
         // Also reset errors
         return {
           ...state,
-          status: 'pending',
+          status: 'fetching',
           error: null,
         };
       case FETCH_MESSAGE_SUCCESS:
@@ -34,7 +34,7 @@ import {
         // There is no messages to display, so set message to empty object
         return {
           ...state,
-          status: 'rejected',
+          status: 'error',
           error: action.payload.error,
           message: {},
         };

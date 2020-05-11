@@ -8,35 +8,32 @@ import { fetchMessage } from '../actioncreators/messageActions';
 function DetailView(props) {
   const { error, status, message, fetchMessage } = props;
   const { id } = useParams();
-  const isLoading = status === 'pending';
-  const isResolved = status === 'resolved';
+  const isLoading = status === 'fetching';
+  // const isResolved = status === 'resolved';
   const isRejected = status === 'rejected';
 
   console.log(message); // making sure message is not undefined
+  console.log(status);
 
   useEffect(() => {
     fetchMessage(id);
-  }, [fetchMessage]); 
+  }, [fetchMessage]);
 
+  if (isLoading) {
+    return <FullPageSpinner />;
+  }
 
   if (isRejected) {
     return <div>Error! {error.message} </div>;
   }
-  if (isLoading) {
-    return <FullPageSpinner />;
-  }
-  if (!message || !message.length) {
+
+  if (!message) {
     return <div>No message to display</div>;
   }
 
-  if (isResolved) {
-    return (
-      <div>
-        Yay. ID: {id}
-      </div>
-    );
-  }
+  return <div>So fun {message.title}</div>;
 }
+
 DetailView.propTypes = {
   fetchMessage: PropTypes.func.isRequired,
   message: PropTypes.object.isRequired,
