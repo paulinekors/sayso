@@ -19,44 +19,24 @@ export const fetchMessageFailure = (error) => ({
   payload: { error },
 });
 
-// function checkStatus (res) {
-//   if (res.status >= 200 && res.status < 300) {
-//     return res
-//   } else {   
-//     throw new Error(res.statusText)
-//   }
-// }
-
-// // Fetching specific message details
-// export function fetchMessage(id) {
-//   const MESSAGE_URL = `${ROOT_URL}/messages/${id}`;
-//   return (dispatch) => {
-//     dispatch(fetchMessageBegin());
-//     return fetch(MESSAGE_URL)
-//       .then(checkStatus)
-//       .then((json) => {
-//         dispatch(fetchMessageSuccess(json));
-//         return json;
-//       })
-//   };
-// }
-
-// Fetching specific message details
 export function fetchMessage(id) {
   const MESSAGE_URL = `${ROOT_URL}/messages/${id}`;
   return (dispatch) => {
     dispatch(fetchMessageBegin());
     return fetch(MESSAGE_URL)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
         }
-        return 'Uh oh this is not supposed to happen';
+        return response.json(); // we only get here if there is no error
       })
       .then((json) => {
         dispatch(fetchMessageSuccess(json));
-        return json;
       })
-      .catch((error) => dispatch(fetchMessageFailure(error)));
+      .catch((err) => {
+        err.text().then((errorMessage) => {
+          dispatch(fetchMessageFailure(errorMessage));
+        });
+      });
   };
 }

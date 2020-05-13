@@ -11,7 +11,7 @@ function DetailView(props) {
   const { error, status, message, fetchMessage } = props;
   const { id } = useParams();
   const isLoading = status === 'fetching' || status === 'initial';
-  const isRejected = status === 'rejected';
+  const isRejected = status === 'error';
 
   //console.log(message); // making sure message is not undefined
   //console.log(status);
@@ -53,7 +53,7 @@ function DetailView(props) {
 DetailView.propTypes = {
   fetchMessage: PropTypes.func.isRequired,
   message: PropTypes.object.isRequired, 
-  error: PropTypes.object,
+  error: PropTypes.string,
   status: PropTypes.string.isRequired,
 };
 

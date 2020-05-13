@@ -13,9 +13,9 @@ import { Link } from 'react-router-dom';
 function App(props) {
   const limit = 50;
   const { error, status, messages, page, fetchMessages, showPage } = props;
-  const isLoading = status === 'pending';
+  const isLoading = status === 'fetching';
   const isResolved = status === 'resolved';
-  const isRejected = status === 'rejected';
+  const isRejected = status === 'error';
 
   //console.log(messages); // making sure messages is not undefined
 
@@ -37,7 +37,6 @@ function App(props) {
     return <div>No messages</div>;
   }
 
-  if (isResolved) {
     return (
       <div>
         <ol className="list">
@@ -89,8 +88,8 @@ function App(props) {
       </div>
     );
   }
-}
 
+  
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
