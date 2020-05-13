@@ -13,9 +13,9 @@ function Header() {
       </div>
       <div className="create-message">
         <Link to={`/new`}>
-          <Fab>
-            <AddIcon fontSize="large" />
-          </Fab>
+            <button>
+              Add message
+            </button>
         </Link>
       </div>
     </header>

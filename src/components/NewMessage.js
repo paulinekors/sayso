@@ -12,42 +12,43 @@ function NewMessage() {
 
   return (
     <div>
-      {/* <div>
-        <h1>Required fields</h1>
-        <p>title body email firstName lastName</p>
-      </div> */}
       <form className="add-message">
-        {isExpanded && <input name="title" placeholder="Add a new message" />}
-        <textarea
-          name="content"
+        <textarea readOnly
+          name="new"
+          onClick={expand}
+          placeholder="Add a new message"
+          rows={isExpanded ? 3 : 0}
+        />
+        {isExpanded && <textarea
+          name="title"
           onClick={expand}
           placeholder="Title:"
           rows={isExpanded ? 2 : 0}
-        />
-        <textarea
+        />}
+        {isExpanded && <textarea
           name="name"
           onClick={expand}
           placeholder="Message:"
           rows={isExpanded ? 5 : 0}
-        />
-        <textarea
+        />}
+        {isExpanded && <textarea
           name="content"
           onClick={expand}
           placeholder="First name:"
           rows={isExpanded ? 1 : 0}
-        />
-        <textarea
+        />}
+        {isExpanded && <textarea
           name="content"
           onClick={expand}
           placeholder="Last name:"
           rows={isExpanded ? 1 : 0}
-        />
-        <textarea
+        />}
+        {isExpanded && <textarea
           name="content"
           onClick={expand}
           placeholder="Email:"
           rows={isExpanded ? 1 : 0}
-        />
+        />}
         <Zoom in={isExpanded}>
           <Fab>
             <AddIcon />
