@@ -1,0 +1,40 @@
+header {
+    background-color: $color-pink-dark;
+    margin-bottom: 25px;
+    padding: 16px 32px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    color: $color-white;
+    font-weight: 600;
+  }
+
+  .create-message button {
+    background-color: $color-pink-light;
+    color: $color-white;
+    border: none;
+    border-radius: 50%;
+    margin-right: 25px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+  
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+  }

@@ -14,7 +14,6 @@ function App(props) {
   const limit = 50;
   const { error, status, messages, page, fetchMessages, showPage } = props;
   const isLoading = status === 'fetching';
-  const isResolved = status === 'resolved';
   const isRejected = status === 'error';
 
   //console.log(messages); // making sure messages is not undefined
@@ -92,6 +91,7 @@ function App(props) {
   
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
+  showPage: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
   error: PropTypes.string,
   status: PropTypes.string.isRequired,

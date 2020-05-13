@@ -10,7 +10,7 @@ import configureStore from './store/configureStore';
 const store = configureStore();
 
 const state = store.getState();
-console.log("Current state is :" + state);
+console.log('Current state is :' + state);
 
 const jsx = (
   <Provider store={store}>
