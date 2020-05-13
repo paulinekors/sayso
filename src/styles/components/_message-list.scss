@@ -10,8 +10,8 @@
 }
 
 .list button {
-  background-color: #00cec9;
-  color: #ffffff;
+  background-color: $color-blue-dark;
+  color: $color-white;
   border: none;
   width: 36px;
   height: 36px;
@@ -33,7 +33,7 @@
   border-radius: 25px;
   position: relative;
   padding: 10px 30px;
-  background-color: #81ecec;
+  background-color: $color-blue-light;
   margin: 15px 25px;
   max-width: 300px;
   min-width: 300px;
@@ -45,7 +45,7 @@
     border-radius: 25px 25px 0 0;
     height: 80px;
     width: 100%;
-    background-color: #00cec9;
+    background-color: $color-blue-dark;
     position: absolute;
     top: 0;
     left: 0;
@@ -70,4 +70,11 @@
   &__date {
     font-style: italic;
   }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
