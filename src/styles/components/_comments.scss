@@ -2,7 +2,7 @@
   background-color: $color-pink-light;
   border-radius: 25px;
   position: absolute;
-  padding: 0px 30px;
+  padding: 20px 30px 20px;
   margin-top: 50px;
   margin-left: -30px;
   margin-bottom: 50px;
@@ -12,12 +12,24 @@
   text-align: left;
   color: #2d3436;
 
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+
   &__name {
     font-weight: bold;
   }
 
   &__date {
     font-style: italic;
+  }
+
+  &__icon {
+    margin-top: -52px;
+    margin-left: 564px;
   }
 }
 

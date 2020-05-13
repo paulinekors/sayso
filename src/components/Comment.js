@@ -8,16 +8,18 @@ import Fab from '@material-ui/core/Fab';
 const Comment = ({ body, firstName, lastName, createdAt }) => (
   <div>
     <div className="comment">
-      <p>{body}</p>
-      <p className="comment__name">
-        {firstName} {lastName}
-      </p>
-      <p className="comment__date">{getFormattedDate(new Date(createdAt))}</p>
-      <Link to={`/`}>
-        <Fab size="small">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
+        <p>{body}</p>
+        <p className="comment__name">
+          {firstName} {lastName}
+        </p>
+        <p className="comment__date">{getFormattedDate(new Date(createdAt))}</p>
+      <div className="comment__icon">
+        <Link to={`/`}>
+          <Fab size="small">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </div>
     </div>
   </div>
 );
