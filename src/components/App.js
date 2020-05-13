@@ -27,10 +27,6 @@ function App(props) {
     fetchMessages(limit, page * limit);
   }, [page]); // on page-change
 
-  function doSomething(event) {
-    event.preventDefault();
-  }
-
   if (isRejected) {
     return <div>Error! {error.message}</div>;
   }
