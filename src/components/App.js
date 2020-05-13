@@ -36,59 +36,60 @@ function App(props) {
     return <div>No messages</div>;
   }
 
-    return (
-      <div>
-        <ol className="list">
-          {messages.map((message) => (
-            <li key={message.id} className="message-list">
-              <div className="message-list__top">
-                <h2 className="message-list__title">{message.title}</h2>
-              </div>
+  return (
+    <div>
+      <ol className="list">
+        {messages.map((message) => (
+          <li key={message.id} className="message-list">
+            <div className="message-list__top">
+              <h2 className="message-list__title">{message.title}</h2>
+            </div>
+            <div className="message-list__info">
               <div className="message-list__bottom">
                 <p>{message.firstName}</p>
                 <p>{getFormattedDate(new Date(message.createdAt))}</p>
               </div>
-              <div>
+              <div className="message-list__icon">
                 <Link to={`/${message.id}`}>
                   <Fab size="small">
                     <ExpandMoreIcon />
                   </Fab>
                 </Link>
               </div>
-            </li>
-          ))}
-        </ol>
+            </div>
+          </li>
+        ))}
+      </ol>
 
-        <div className="pagination">
-          {page > 1 && (
-            <button className="btn" onClick={() => showPage(page - 2)}>
-              Page {page - 1}
-            </button>
-          )}
-          {page > 0 && (
-            <button className="btn" onClick={() => showPage(page - 1)}>
-              Page {page}
-            </button>
-          )}
-          <button className="btn" disabled>
-            Page {page + 1}
+      <div className="pagination">
+        {page > 1 && (
+          <button className="btn" onClick={() => showPage(page - 2)}>
+            Page {page - 1}
           </button>
-          {messages.length >= limit && (
-            <button className="btn" onClick={() => showPage(page + 1)}>
-              Page {page + 2}
-            </button>
-          )}
-          {messages.length >= limit && (
-            <button className="btn" onClick={() => showPage(page + 2)}>
-              Page {page + 3}
-            </button>
-          )}
-        </div>
+        )}
+        {page > 0 && (
+          <button className="btn" onClick={() => showPage(page - 1)}>
+            Page {page}
+          </button>
+        )}
+        <button className="btn" disabled>
+          Page {page + 1}
+        </button>
+        {messages.length >= limit && (
+          <button className="btn" onClick={() => showPage(page + 1)}>
+            Page {page + 2}
+          </button>
+        )}
+        {messages.length >= limit && (
+          <button className="btn" onClick={() => showPage(page + 2)}>
+            Page {page + 3}
+          </button>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  
 App.propTypes = {
   fetchMessages: PropTypes.func.isRequired,
   showPage: PropTypes.func.isRequired,
