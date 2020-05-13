@@ -1,8 +1,13 @@
 import React from 'react';
 
-export const NewMessage = () => (
-        <div>
-          <h1>Say something</h1>
-        </div>
-);
-  
+function NewMessage() {
+
+  return (
+    <div>
+      <h1>Required fields</h1>
+      <p>body title email firstName lastName title</p>
+    </div>
+  );
+}
+
+export default NewMessage;
