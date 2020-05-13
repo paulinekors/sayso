@@ -12,8 +12,13 @@ header {
   }
 
   .logo {
-    color: $color-white;
     font-weight: 600;
+    &__link:link,
+    &__link:visited {
+        color: $color-white;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
   }
 
   .create-message button {

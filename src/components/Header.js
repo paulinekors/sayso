@@ -7,12 +7,14 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <h1>Sayso</h1>
+        <Link className="logo__link" to={`/`}>
+          <h1>Sayso</h1>
+        </Link>
       </div>
       <div className="create-message">
         <Link to={`/new`}>
           <Fab>
-            <AddIcon fontSize="large"/>
+            <AddIcon fontSize="large" />
           </Fab>
         </Link>
       </div>
