@@ -52,7 +52,7 @@ function DetailView(props) {
 
 DetailView.propTypes = {
   fetchMessage: PropTypes.func.isRequired,
-  message: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired, 
   error: PropTypes.object,
   status: PropTypes.string.isRequired,
 };

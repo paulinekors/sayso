@@ -7,7 +7,7 @@ const AppRouter = () => (
   <BrowserRouter>
       <Switch>
         <Route path="/" component={App} exact={true} />
-        <Route path="/:id" component={DetailView} />
+        <Route path="/:id" component={DetailView} exact={true} />
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
         {/* Other ways of writing this are: */}
         {/* <Redirect from="*" to="/" /> */}

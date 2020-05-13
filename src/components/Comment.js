@@ -2,6 +2,8 @@ import React from 'react';
 import { getFormattedDate } from '../utils/DateFormatter';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Fab from '@material-ui/core/Fab';
 
 const Comment = ({ body, firstName, lastName, createdAt }) => (
   <div>
@@ -12,7 +14,9 @@ const Comment = ({ body, firstName, lastName, createdAt }) => (
       </p>
       <p className="comment__date">{getFormattedDate(new Date(createdAt))}</p>
       <Link to={`/`}>
-        <button className="btn btn--white">Go back to messages</button>
+        <Fab size="small">
+          <ArrowBackIcon />
+        </Fab>
       </Link>
     </div>
   </div>

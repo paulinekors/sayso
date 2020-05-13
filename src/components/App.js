@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import { fetchMessages, showPage } from '../actioncreators/messagesActions';
 import { connect } from 'react-redux';
 import FullPageSpinner from '../utils/FullPageSpinner';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Fab from '@material-ui/core/Fab';
+import { Link } from 'react-router-dom';
 
 function App(props) {
   const limit = 50;
@@ -23,6 +26,10 @@ function App(props) {
   useEffect(() => {
     fetchMessages(limit, page * limit);
   }, [page]); // on page-change
+
+  function doSomething(event) {
+    event.preventDefault();
+  }
 
   if (isRejected) {
     return <div>Error! {error.message}</div>;
@@ -42,14 +49,22 @@ function App(props) {
             <li key={message.id} className="message-list">
               <div className="message-list__top">
                 <h2 className="message-list__title">{message.title}</h2>
-                </div>
-                <div className="message-list__bottom">
+              </div>
+              <div className="message-list__bottom">
                 <p>{message.firstName}</p>
                 <p>{getFormattedDate(new Date(message.createdAt))}</p>
-                </div>
+              </div>
+              <div>
+                <Link to={`/${message.id}`}>
+                  <Fab size="small">
+                    <ExpandMoreIcon />
+                  </Fab>
+                </Link>
+              </div>
             </li>
           ))}
         </ol>
+
         {page > 1 && (
           <button className="btn" onClick={() => showPage(page - 2)}>
             Page {page - 1}

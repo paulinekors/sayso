@@ -20,3 +20,24 @@
     font-style: italic;
   }
 }
+
+.comment button {
+  background-color: #e19999;
+  color: #ffffff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 15px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+}
