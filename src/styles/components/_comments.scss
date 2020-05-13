@@ -1,5 +1,5 @@
 .comment {
-  background-color: #ffb6b6;
+  background-color: $color-pink-light;
   border-radius: 25px;
   position: absolute;
   padding: 0px 30px;
@@ -22,7 +22,7 @@
 }
 
 .comment button {
-  background-color: #e19999;
+  background-color: $color-pink-dark;
   color: #ffffff;
   border: none;
   width: 36px;

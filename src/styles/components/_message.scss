@@ -2,7 +2,7 @@
   border-radius: 25px;
   position: relative;
   padding: 25px 30px;
-  background-color: #81ecec;
+  background-color: $color-blue-light;
   margin: 50px 50px;
   max-width: 600px;
   min-width: 600px;
@@ -14,7 +14,7 @@
     border-radius: 25px 25px 0 0;
     height: 100px;
     width: 100%;
-    background-color: #00cec9;
+    background-color: $color-blue-dark;
     position: absolute;
     top: 0;
     left: 0;
