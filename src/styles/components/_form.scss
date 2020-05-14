@@ -1,6 +1,6 @@
 .add-message {
     position: relative;
-    width: 480px;
+    width: 800px;
     margin: 130px auto 20px auto;
     background: $color-blue-light;
     padding: 30px;
@@ -43,4 +43,35 @@ form.add-message button {
         opacity: 0;
       }
     }
+}
+
+.error-message {
+  color: $color-pink-dark;
+
+  &::before {
+      display: inline;
+      content: "⚠ ";
+    }
+}
+
+label {
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  padding: 4px;
+  color: #888888;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
